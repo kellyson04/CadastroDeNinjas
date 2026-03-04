@@ -1,6 +1,9 @@
-package dev.java10x.CadastroDeNinja;
+package dev.java10x.CadastroDeNinja.Ninjas;
 
+import dev.java10x.CadastroDeNinja.Missoes.MissoesModel;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 //Entity transforma uma classe em entidade no Banco de Dados
 @Entity
@@ -14,6 +17,10 @@ public class NinjaModel {
     private String nome;
     private String email;
     private int idade;
+    @ManyToOne // varios ninjas podem estar em uma missao
+    @JoinColumn(name = "missoes_id") // aq é a foreign key, kk basicamente a chave q faz a junção das duas tabela qnd ambas sao referenciadas
+    private MissoesModel missoes;
+
 
     public NinjaModel() {
     }
